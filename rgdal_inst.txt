@@ -1,0 +1,20 @@
+## taken from http://stackoverflow.com/questions/15248815/rgdal-package-installation
+
+
+If you use OS X with the Homebrew package manager, and have R installed through the homebrew-science tap, you can install rgdal by first installing gdal.
+
+brew install gdal
+
+You may first want to list the options available before you run this in case you want something fancy like postgresql support. To see the available options type
+
+brew options gdal
+
+then to be fancy you can type
+
+brew install --with-postgresql gdal
+
+after a while you should be good to go with dependencies, since proj including your needed proj_api.h are dependencies! Unfortunately, rgdal still won't find pro_api.h right now since it isn't looking in /usr/local/include. To fix this and other possible maladies with your rgdal installation, use the following R command to install rgdal:
+
+  > install.packages('rgdal', type = "source", configure.args=c('--with-proj-include=/usr/local/include','--with-proj-lib=/usr/local/lib'))
+
+This should be similar to what you would also need for MacPorts with the exception of the brew steps, and your libraries/headers are most likely under "/opt/local/lib" and "/opt/local/include" respectively.
