@@ -1,3 +1,6 @@
+for rgeos, consider exporting LIBS="-lstdc++"....
+
+
 ## taken from http://stackoverflow.com/questions/15248815/rgdal-package-installation
 
 
